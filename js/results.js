@@ -6,6 +6,10 @@ function formatPrice(value) {
     return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " đ";
 }
 
+function normalizeString(value) {
+    return value ? value.toString().trim().toLowerCase().normalize("NFC") : "";
+}
+
 function renderResult(trip) {
     return `
     <div class="result-card">
@@ -42,9 +46,9 @@ function updateSummary(from, to, date) {
 
 window.addEventListener("DOMContentLoaded", function() {
     var params = getQueryParams();
-    var from = params.from || "";
-    var to = params.to || "";
-    var date = params.date || "";
+    var from = (params.from || "").trim();
+    var to = (params.to || "").trim();
+    var date = (params.date || "").trim();
 
     if (!from || !to || !date) {
         document.getElementById("searchSummary").textContent = "Vui lòng quay lại và nhập thông tin chuyến đi.";
@@ -53,6 +57,9 @@ window.addEventListener("DOMContentLoaded", function() {
     }
 
     updateSummary(from, to, date);
+
+    var normalizedFrom = normalizeString(from);
+    var normalizedTo = normalizeString(to);
 
     fetch("database/trips.json")
         .then(function(response) {
@@ -63,8 +70,8 @@ window.addEventListener("DOMContentLoaded", function() {
         })
         .then(function(trips) {
             var filtered = trips.filter(function(trip) {
-                return trip.from.toLowerCase() === from.toLowerCase()
-                    && trip.to.toLowerCase() === to.toLowerCase()
+                return normalizeString(trip.from) === normalizedFrom
+                    && normalizeString(trip.to) === normalizedTo
                     && trip.date === date
                     && trip.seatsAvailable > 0;
             });
