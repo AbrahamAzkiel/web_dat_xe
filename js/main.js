@@ -44,6 +44,237 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 document.getElementById("submitBtn").onclick = function() {
     alert("Đặt vé thành công!");
 };
+
+document.querySelectorAll('.card-place').forEach(function(card) {
+    card.addEventListener('click', function() {
+        var from = card.dataset.from;
+        var to = card.dataset.to;
+        if (from && to) {
+            window.location.href = `search-results.html?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`;
+        }
+    });
+});
+
+var serviceDescriptions = {
+    'vé giường nằm': 'Chuyến xe giường nằm mang đến không gian rộng rãi, ghế êm ái, điều hòa và tiện ích cá nhân để bạn nghỉ ngơi thoải mái suốt hành trình.',
+    'vé limousine': 'Xe limousine cao cấp với ghế da, wifi tốc độ cao, phục vụ nước uống miễn phí và không gian riêng tư cho chuyến đi sang trọng.',
+    'xe hợp đồng': 'Xe hợp đồng linh hoạt cho nhóm hoặc gia đình, phục vụ lịch trình theo yêu cầu và đảm bảo chuyến đi an toàn, tiện lợi.'
+};
+
+document.querySelectorAll('.service-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+        var serviceKey = card.dataset.service;
+        var description = serviceDescriptions[serviceKey] || 'Thông tin dịch vụ đang được cập nhật.';
+        document.getElementById('serviceTitle').textContent = serviceKey;
+        document.getElementById('serviceDescription').textContent = description;
+        var modalEl = document.getElementById('serviceModal');
+        var serviceModal = new bootstrap.Modal(modalEl);
+        serviceModal.show();
+    });
+});
+
+document.getElementById("loginBtn").addEventListener('click', function() {
+    var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+    loginModal.show();
+});
+
+document.getElementById('openRegisterLink').addEventListener('click', function() {
+    var loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+    if (loginModal) loginModal.hide();
+    var registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+    registerModal.show();
+});
+
+document.getElementById('openLoginLink').addEventListener('click', function() {
+    var registerModal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
+    if (registerModal) registerModal.hide();
+    var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+    loginModal.show();
+});
+
+document.getElementById('forgotPasswordLink').addEventListener('click', function() {
+    var loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+    if (loginModal) loginModal.hide();
+    var forgotModal = new bootstrap.Modal(document.getElementById('forgotModal'));
+    forgotModal.show();
+});
+
+function getUsers() {
+    return JSON.parse(localStorage.getItem('xn_users') || '[]');
+}
+
+function saveUsers(users) {
+    localStorage.setItem('xn_users', JSON.stringify(users));
+}
+
+function showAlert(id, message) {
+    var alert = document.getElementById(id);
+    if (!alert) return;
+    alert.textContent = message;
+    alert.classList.remove('d-none');
+}
+
+function hideAlerts(ids) {
+    ids.forEach(function(id) {
+        var alert = document.getElementById(id);
+        if (alert) {
+            alert.classList.add('d-none');
+        }
+    });
+}
+
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    hideAlerts(['loginError']);
+
+    var username = document.getElementById('loginUsername').value.trim();
+    var password = document.getElementById('loginPassword').value;
+
+    if (!username || !password) {
+        showAlert('loginError', 'Vui lòng nhập tài khoản và mật khẩu.');
+        return;
+    }
+
+    var users = getUsers();
+    var user = users.find(function(item) {
+        return item.username === username;
+    });
+
+    if (!user || user.password !== password) {
+        showAlert('loginError', 'Tài khoản hoặc mật khẩu không đúng.');
+        return;
+    }
+
+    alert('Đăng nhập thành công!');
+    var loginModal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+    if (loginModal) loginModal.hide();
+});
+
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    hideAlerts(['registerError', 'registerSuccess']);
+
+    var email = document.getElementById('registerEmail').value.trim();
+    var username = document.getElementById('registerUsername').value.trim();
+    var password = document.getElementById('registerPassword').value;
+    var phone = document.getElementById('registerPhone').value.trim();
+    var address = document.getElementById('registerAddress').value.trim();
+
+    if (!email || !username || !password || !phone) {
+        showAlert('registerError', 'Email, tài khoản, mật khẩu và số điện thoại là bắt buộc.');
+        return;
+    }
+
+    if (!email.includes('@') || email.includes(' ')) {
+        showAlert('registerError', 'Email không hợp lệ.');
+        return;
+    }
+
+    if (!/^[A-Za-z0-9]+$/.test(username)) {
+        showAlert('registerError', 'Tài khoản không được có ký tự đặc biệt hoặc dấu.');
+        return;
+    }
+
+    var users = getUsers();
+    if (users.some(function(item) { return item.username === username; })) {
+        showAlert('registerError', 'Tài khoản đã tồn tại. Vui lòng chọn tài khoản khác.');
+        return;
+    }
+
+    if (users.some(function(item) { return item.email === email; })) {
+        showAlert('registerError', 'Email đã được sử dụng.');
+        return;
+    }
+
+    if (!/^[0-9]{9,12}$/.test(phone)) {
+        showAlert('registerError', 'Số điện thoại phải là số, từ 9 đến 12 chữ số.');
+        return;
+    }
+
+    users.push({ email: email, username: username, password: password, phone: phone, address: address });
+    saveUsers(users);
+
+    showAlert('registerSuccess', 'Đăng ký thành công. Bạn có thể đăng nhập ngay.');
+    document.getElementById('registerForm').reset();
+
+    setTimeout(function() {
+        var registerModal = bootstrap.Modal.getInstance(document.getElementById('registerModal'));
+        if (registerModal) registerModal.hide();
+        var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+        loginModal.show();
+    }, 500);
+});
+
+document.getElementById('forgotForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    hideAlerts(['forgotError', 'forgotSuccess']);
+
+    var email = document.getElementById('forgotEmail').value.trim();
+    if (!email) {
+        showAlert('forgotError', 'Vui lòng nhập email đã đăng ký.');
+        return;
+    }
+
+    var users = getUsers();
+    var user = users.find(function(item) {
+        return item.email === email;
+    });
+
+    if (!user) {
+        showAlert('forgotError', 'Email chưa được đăng ký.');
+        return;
+    }
+
+    showAlert('forgotSuccess', 'Yêu cầu đã gửi. Vui lòng kiểm tra email để xác nhận.');
+    document.getElementById('forgotForm').reset();
+});
+
+function getUsers() {
+    return JSON.parse(localStorage.getItem('xn_users') || '[]');
+}
+
+function saveUsers(users) {
+    localStorage.setItem('xn_users', JSON.stringify(users));
+}
+
+function initializeUserDatabase() {
+    if (localStorage.getItem('xn_users') === null) {
+        fetch('database/users.json')
+            .then(function(response) {
+                if (!response.ok) {
+                    return [];
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                if (Array.isArray(data)) {
+                    saveUsers(data);
+                }
+            })
+            .catch(function() {
+                saveUsers([]);
+            });
+    }
+}
+
+function showAlert(id, message) {
+    var alert = document.getElementById(id);
+    if (!alert) return;
+    alert.textContent = message;
+    alert.classList.remove('d-none');
+}
+
+function hideAlerts(ids) {
+    ids.forEach(function(id) {
+        var alert = document.getElementById(id);
+        if (alert) {
+            alert.classList.add('d-none');
+        }
+    });
+}
+
+initializeUserDatabase();
+
 document.getElementById("swapBtn").onclick = function() {
     let from = document.getElementById("from");
     let to = document.getElementById("to");

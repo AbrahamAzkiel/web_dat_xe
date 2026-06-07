@@ -50,13 +50,17 @@ window.addEventListener("DOMContentLoaded", function() {
     var to = (params.to || "").trim();
     var date = (params.date || "").trim();
 
-    if (!from || !to || !date) {
+    if (!from || !to) {
         document.getElementById("searchSummary").textContent = "Vui lòng quay lại và nhập thông tin chuyến đi.";
         showNoResults();
         return;
     }
 
-    updateSummary(from, to, date);
+    if (date) {
+        updateSummary(from, to, date);
+    } else {
+        document.getElementById("searchSummary").textContent = `Tìm chuyến từ ${from} đến ${to}.`;
+    }
 
     var normalizedFrom = normalizeString(from);
     var normalizedTo = normalizeString(to);
@@ -72,8 +76,8 @@ window.addEventListener("DOMContentLoaded", function() {
             var filtered = trips.filter(function(trip) {
                 return normalizeString(trip.from) === normalizedFrom
                     && normalizeString(trip.to) === normalizedTo
-                    && trip.date === date
-                    && trip.seatsAvailable > 0;
+                    && trip.seatsAvailable > 0
+                    && (!date || trip.date === date);
             });
 
             if (!filtered.length) {

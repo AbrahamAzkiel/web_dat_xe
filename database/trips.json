@@ -58,5 +58,53 @@
     "busName": "Xe Thịnh Phát",
     "busType": "Giường nằm",
     "features": "TV, điều hòa, khăn lạnh"
+  },
+  {
+    "id": 6,
+    "from": "TP.HCM",
+    "to": "Phan Thiết",
+    "date": "2026-06-13",
+    "departureTime": "09:00",
+    "price": 180000,
+    "seatsAvailable": 10,
+    "busName": "Xe Bình Minh",
+    "busType": "Giường nằm",
+    "features": "Wifi, điều hòa, nước uống"
+  },
+  {
+    "id": 7,
+    "from": "TP.HCM",
+    "to": "Quy Nhơn",
+    "date": "2026-06-15",
+    "departureTime": "20:00",
+    "price": 350000,
+    "seatsAvailable": 6,
+    "busName": "Xe Phương Trang",
+    "busType": "Limousine",
+    "features": "TV, sạc USB, gối đệm"
+  },
+  {
+    "id": 8,
+    "from": "Hà Nội",
+    "to": "Sapa",
+    "date": "2026-06-11",
+    "departureTime": "06:30",
+    "price": 420000,
+    "seatsAvailable": 7,
+    "busName": "Xe Hồng Hà",
+    "busType": "Giường nằm",
+    "features": "Wifi, điều hòa, chăn ấm"
+  },
+  {
+    "id": 9,
+    "from": "Đà Nẵng",
+    "to": "Hội An",
+    "date": "2026-06-16",
+    "departureTime": "13:00",
+    "price": 120000,
+    "seatsAvailable": 4,
+    "busName": "Xe Trường Thịnh",
+    "busType": "Ghế ngồi thường",
+    "features": "Điều hòa, ghế êm, nước uống"
   }
 ]
