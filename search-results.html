@@ -37,6 +37,29 @@
     </div>
   </section>
 
+  <div class="modal fade" id="seatModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content p-3">
+        <div class="modal-header">
+          <h5 class="modal-title" id="seatModalTitle">Chọn chỗ ngồi</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+        </div>
+        <div class="modal-body">
+          <p id="seatModalSubtitle">Chọn một ghế trống để đặt vé.</p>
+          <div class="seat-grid" id="seatGrid"></div>
+          <div class="mt-3 d-flex justify-content-between align-items-center">
+            <div class="seat-legend">
+              <span class="badge bg-success">Trống</span>
+              <span class="badge bg-secondary">Đã đặt</span>
+              <span class="badge bg-warning text-dark">Chọn</span>
+            </div>
+            <button id="confirmSeatBtn" class="btn btn-primary" disabled>Đặt ghế</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="text-center p-3">
     © 2024 XeNhanh
   </footer>

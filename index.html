@@ -58,7 +58,13 @@
 
   <div class="field">
     <label>Ngày đi</label>
-    <input id="date" name="date" type="date">
+    <div class="date-group">
+      <input id="date" name="date" type="text" placeholder="Ngày/Tháng/Năm" autocomplete="off" inputmode="numeric" class="form-control">
+      <button id="datePickerBtn" type="button" aria-label="Chọn ngày">
+        <img src="images/calendar.png" alt="Lịch" />
+      </button>
+    </div>
+    <input id="datePicker" type="date" style="position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
   </div>
 
   <button type="submit" class="search-btn">Tìm vé</button>
@@ -104,7 +110,7 @@
       </p>
     </div>
     <div class="col-md-4">
-      <img src="https://picsum.photos/300" class="img-fluid rounded">
+      <img src="images/mountain-travel.jpg" class="img-fluid rounded" alt="Du lịch vùng núi">
     </div>
   </div>
 </section>

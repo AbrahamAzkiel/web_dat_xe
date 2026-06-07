@@ -1,0 +1,155 @@
+[
+  {
+    "tripId": 1,
+    "seats": [
+      {"label": "1", "status": "available"},
+      {"label": "2", "status": "booked"},
+      {"label": "3", "status": "available"},
+      {"label": "4", "status": "booked"},
+      {"label": "5", "status": "available"},
+      {"label": "6", "status": "available"},
+      {"label": "7", "status": "booked"},
+      {"label": "8", "status": "available"},
+      {"label": "9", "status": "available"},
+      {"label": "10", "status": "booked"},
+      {"label": "11", "status": "available"},
+      {"label": "12", "status": "available"}
+    ]
+  },
+  {
+    "tripId": 2,
+    "seats": [
+      {"label": "1", "status": "booked"},
+      {"label": "2", "status": "booked"},
+      {"label": "3", "status": "available"},
+      {"label": "4", "status": "available"},
+      {"label": "5", "status": "available"},
+      {"label": "6", "status": "available"},
+      {"label": "7", "status": "booked"},
+      {"label": "8", "status": "available"},
+      {"label": "9", "status": "available"},
+      {"label": "10", "status": "available"},
+      {"label": "11", "status": "booked"},
+      {"label": "12", "status": "available"}
+    ]
+  },
+  {
+    "tripId": 3,
+    "seats": [
+      {"label": "1", "status": "available"},
+      {"label": "2", "status": "available"},
+      {"label": "3", "status": "booked"},
+      {"label": "4", "status": "available"},
+      {"label": "5", "status": "booked"},
+      {"label": "6", "status": "available"},
+      {"label": "7", "status": "available"},
+      {"label": "8", "status": "available"},
+      {"label": "9", "status": "available"},
+      {"label": "10", "status": "booked"},
+      {"label": "11", "status": "available"},
+      {"label": "12", "status": "available"}
+    ]
+  },
+  {
+    "tripId": 4,
+    "seats": [
+      {"label": "1", "status": "available"},
+      {"label": "2", "status": "available"},
+      {"label": "3", "status": "available"},
+      {"label": "4", "status": "booked"},
+      {"label": "5", "status": "booked"},
+      {"label": "6", "status": "available"},
+      {"label": "7", "status": "available"},
+      {"label": "8", "status": "available"},
+      {"label": "9", "status": "available"},
+      {"label": "10", "status": "available"},
+      {"label": "11", "status": "available"},
+      {"label": "12", "status": "booked"}
+    ]
+  },
+  {
+    "tripId": 5,
+    "seats": [
+      {"label": "1", "status": "booked"},
+      {"label": "2", "status": "booked"},
+      {"label": "3", "status": "booked"},
+      {"label": "4", "status": "booked"},
+      {"label": "5", "status": "booked"},
+      {"label": "6", "status": "booked"},
+      {"label": "7", "status": "booked"},
+      {"label": "8", "status": "booked"},
+      {"label": "9", "status": "booked"},
+      {"label": "10", "status": "booked"},
+      {"label": "11", "status": "booked"},
+      {"label": "12", "status": "booked"}
+    ]
+  },
+  {
+    "tripId": 6,
+    "seats": [
+      {"label": "1", "status": "available"},
+      {"label": "2", "status": "available"},
+      {"label": "3", "status": "available"},
+      {"label": "4", "status": "available"},
+      {"label": "5", "status": "available"},
+      {"label": "6", "status": "booked"},
+      {"label": "7", "status": "booked"},
+      {"label": "8", "status": "available"},
+      {"label": "9", "status": "available"},
+      {"label": "10", "status": "available"},
+      {"label": "11", "status": "available"},
+      {"label": "12", "status": "available"}
+    ]
+  },
+  {
+    "tripId": 7,
+    "seats": [
+      {"label": "1", "status": "booked"},
+      {"label": "2", "status": "available"},
+      {"label": "3", "status": "available"},
+      {"label": "4", "status": "available"},
+      {"label": "5", "status": "available"},
+      {"label": "6", "status": "booked"},
+      {"label": "7", "status": "available"},
+      {"label": "8", "status": "available"},
+      {"label": "9", "status": "available"},
+      {"label": "10", "status": "booked"},
+      {"label": "11", "status": "available"},
+      {"label": "12", "status": "available"}
+    ]
+  },
+  {
+    "tripId": 8,
+    "seats": [
+      {"label": "1", "status": "available"},
+      {"label": "2", "status": "available"},
+      {"label": "3", "status": "booked"},
+      {"label": "4", "status": "available"},
+      {"label": "5", "status": "booked"},
+      {"label": "6", "status": "available"},
+      {"label": "7", "status": "available"},
+      {"label": "8", "status": "available"},
+      {"label": "9", "status": "available"},
+      {"label": "10", "status": "available"},
+      {"label": "11", "status": "available"},
+      {"label": "12", "status": "available"}
+    ]
+  },
+  {
+    "tripId": 9,
+    "seats": [
+      {"label": "1", "status": "available"},
+      {"label": "2", "status": "available"},
+      {"label": "3", "status": "available"},
+      {"label": "4", "status": "booked"},
+      {"label": "5", "status": "available"},
+      {"label": "6", "status": "available"},
+      {"label": "7", "status": "available"},
+      {"label": "8", "status": "booked"},
+      {"label": "9", "status": "available"},
+      {"label": "10", "status": "available"},
+      {"label": "11", "status": "available"},
+      {"label": "12", "status": "available"}
+    ]
+  }
+]

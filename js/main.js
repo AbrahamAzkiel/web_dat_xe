@@ -3,7 +3,7 @@ if (searchForm) {
     searchForm.addEventListener("submit", function(e) {
         let from = document.getElementById("from").value.trim();
         let to = document.getElementById("to").value.trim();
-        let date = document.getElementById("date").value;
+        let date = document.getElementById("date").value.trim();
 
         if (!from || !to || !date) {
             alert("Vui lòng nhập đủ Điểm đi, Điểm đến và Ngày đi.");
@@ -14,7 +14,34 @@ if (searchForm) {
         if (from.toLowerCase() === to.toLowerCase()) {
             alert("Điểm đi và Điểm đến không được giống nhau.");
             e.preventDefault();
+            return;
         }
+
+        var datePattern = /^(?:([0-9]{1,2})[\/\-]([0-9]{1,2})[\/\-]([0-9]{4})|([0-9]{4})-([0-9]{2})-([0-9]{2}))$/;
+        var match = date.match(datePattern);
+        if (!match) {
+            alert("Vui lòng nhập ngày theo định dạng Ngày/Tháng/Năm (ví dụ 10/06/2026). ");
+            e.preventDefault();
+            return;
+        }
+
+        if (match[4]) {
+            // Định dạng ISO đã nhập trực tiếp
+            date = match[4] + "-" + match[5] + "-" + match[6];
+        } else {
+            date = match[3] + "-" + match[2].padStart(2, "0") + "-" + match[1].padStart(2, "0");
+        }
+
+        var selectedDate = new Date(date);
+        var today = new Date();
+        today.setHours(0, 0, 0, 0);
+        if (selectedDate < today) {
+            alert("Vui lòng chọn ngày từ hôm nay trở đi.");
+            e.preventDefault();
+            return;
+        }
+
+        document.getElementById("date").value = date;
     });
 }
 
@@ -44,6 +71,48 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
 document.getElementById("submitBtn").onclick = function() {
     alert("Đặt vé thành công!");
 };
+
+function setDatePickerMin() {
+    var today = new Date();
+    var year = today.getFullYear();
+    var month = String(today.getMonth() + 1).padStart(2, '0');
+    var day = String(today.getDate()).padStart(2, '0');
+    var minDate = year + '-' + month + '-' + day;
+    var datePicker = document.getElementById('datePicker');
+    if (datePicker) {
+        datePicker.min = minDate;
+    }
+}
+
+function formatDateToDDMMYYYY(value) {
+    var parts = value.split('-');
+    if (parts.length !== 3) return value;
+    return parts[2] + '/' + parts[1] + '/' + parts[0];
+}
+
+function formatDateToYYYYMMDD(value) {
+    var parts = value.split(/[\/\-]/);
+    if (parts.length !== 3) return value;
+    if (parts[0].length === 4) {
+        return value;
+    }
+    return parts[2] + '-' + parts[1].padStart(2, '0') + '-' + parts[0].padStart(2, '0');
+}
+
+document.getElementById('datePickerBtn').addEventListener('click', function() {
+    var datePicker = document.getElementById('datePicker');
+    if (datePicker) {
+        setDatePickerMin();
+        datePicker.click();
+    }
+});
+
+document.getElementById('datePicker').addEventListener('change', function() {
+    var value = this.value;
+    if (value) {
+        document.getElementById('date').value = formatDateToDDMMYYYY(value);
+    }
+});
 
 document.querySelectorAll('.card-place').forEach(function(card) {
     card.addEventListener('click', function() {
