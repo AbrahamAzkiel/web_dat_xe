@@ -43,28 +43,30 @@
     <p>Nhanh – Rẻ – Tiện lợi</p>
 
     <!-- SEARCH -->
-    <div class="search-vexere">
+    <form id="searchForm" action="search-results.html" method="GET" class="search-vexere">
   
   <div class="field">
     <label>Điểm đi</label>
-    <input id="from" type="text" placeholder="TP.HCM">
+    <input id="from" name="from" type="text" placeholder="TP.HCM">
   </div>
 
-  <button id="swapBtn" class="swap-btn">⇄</button>
+  <button id="swapBtn" type="button" class="swap-btn">⇄</button>
 
   <div class="field">
     <label>Điểm đến</label>
-    <input id="to" type="text" placeholder="Đà Lạt">
+    <input id="to" name="to" type="text" placeholder="Đà Lạt">
   </div>
 
   <div class="field">
     <label>Ngày đi</label>
-    <input type="date">
+    <input id="date" name="date" type="date">
   </div>
 
-  <button class="search-btn">Tìm vé</button>
+  <button type="submit" class="search-btn">Tìm vé</button>
 
-</div>
+</form>
+  </div>
+</section>
 
 <!-- ===== POPULAR ===== -->
 <section class="container section">
@@ -99,7 +101,8 @@
   <div class="row">
     <div class="col-md-8">
       <h2>Giới thiệu</h2>
-      <p>Dịch vụ đặt vé xe tiện lợi, nhanh chóng...</p>
+      <p>Đóng vai trò là trang web đặt vé xe nhanh chóng và tiện lợi. Chúng tôi mong muốn đem đến cho khách hàng trải nghiệm đặt vé dễ dàng, giá cả hợp lý và dịch vụ chất lượng. Với giao diện thân thiện và tính năng tìm kiếm thông minh, chúng tôi cam kết giúp bạn tìm được chuyến xe phù hợp nhất với nhu cầu của mình.
+      </p>
     </div>
     <div class="col-md-4">
       <img src="https://picsum.photos/300" class="img-fluid rounded">

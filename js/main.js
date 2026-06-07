@@ -1,3 +1,23 @@
+var searchForm = document.getElementById("searchForm");
+if (searchForm) {
+    searchForm.addEventListener("submit", function(e) {
+        let from = document.getElementById("from").value.trim();
+        let to = document.getElementById("to").value.trim();
+        let date = document.getElementById("date").value;
+
+        if (!from || !to || !date) {
+            alert("Vui lòng nhập đủ Điểm đi, Điểm đến và Ngày đi.");
+            e.preventDefault();
+            return;
+        }
+
+        if (from.toLowerCase() === to.toLowerCase()) {
+            alert("Điểm đi và Điểm đến không được giống nhau.");
+            e.preventDefault();
+        }
+    });
+}
+
 // CONTACT FORM
 document.getElementById("contactForm").addEventListener("submit", function(e) {
     let name = document.getElementById("cname").value;

@@ -1,5 +1,7 @@
 body {
     font-family: Arial;
+    background: white url('../images/background.jpg') no-repeat center/cover;
+    color: #333;
 }
 
 /* NAVBAR */
@@ -14,8 +16,8 @@ body {
 
 /* HERO */
 .hero {
-    background: linear-gradient(135deg, orange, gold);
-    color: white;
+    background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('../images/background.jpg') center/cover;
+    color: #333;
     padding: 120px 20px;
 }
 
@@ -62,6 +64,44 @@ body {
 /* SECTION */
 .section {
     padding: 60px 0;
+}
+
+.results-summary {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.result-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-4px);
+}
+
+.result-card h5 {
+    margin-bottom: 10px;
+}
+
+.result-details {
+    display: grid;
+    gap: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.btn-select {
+    background: orange;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    padding: 10px 22px;
+    font-weight: bold;
 }
 
 /* FOOTER */
