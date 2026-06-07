@@ -16,9 +16,19 @@ body {
 
 /* HERO */
 .hero {
-    background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('../images/background.jpg') center/cover;
-    color: #333;
+    background: linear-gradient(rgba(255,255,255,0.90), rgba(255,255,255,0.90)), url('../images/background.jpg') center/cover;
+    color: #222;
     padding: 120px 20px;
+}
+
+.hero h1 {
+    color: #111;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.hero p {
+    color: #4a4a4a;
+    font-size: 1.1rem;
 }
 
 /* SEARCH */
@@ -63,7 +73,69 @@ body {
 
 /* SECTION */
 .section {
-    padding: 60px 0;
+    padding: 60px 25px;
+    background: rgba(255,255,255,0.92);
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    margin: 30px auto;
+    text-align: center;
+}
+
+.section > .container,
+.section > .row,
+.section > .text-center {
+    position: relative;
+    z-index: 1;
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 1.4rem;
+}
+
+.section p {
+    margin: 0 auto;
+    max-width: 760px;
+}
+
+.section .row {
+    justify-content: center;
+}
+
+.section .col-md-8,
+.section .col-md-4,
+.section .col-md-6 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#about {
+    color: #111;
+}
+
+#about h2 {
+    color: #111;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+#about p {
+    color: #222;
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    #about {
+        background: rgba(255,255,255,0.92);
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    #about h2,
+    #about p {
+        color: #111;
+    }
 }
 
 .results-summary {
@@ -147,6 +219,23 @@ footer {
     background: orange;
     color: white;
     border-color: #ffb84d;
+}
+
+.badge-available {
+    background: #f8f9fa;
+    color: #333;
+    border: 1px solid #ddd;
+}
+
+.badge-booked {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c2c7;
+}
+
+.badge-selected {
+    background: orange;
+    color: white;
 }
 
 /* mỗi ô */
