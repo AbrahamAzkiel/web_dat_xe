@@ -98,13 +98,8 @@ body {
     max-width: 760px;
 }
 
-.section .row {
-    justify-content: center;
-}
-
-.section .col-md-8,
-.section .col-md-4,
-.section .col-md-6 {
+#about .col-md-8,
+#about .col-md-4 {
     display: flex;
     flex-direction: column;
     align-items: center;
